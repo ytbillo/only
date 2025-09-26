@@ -183,7 +183,7 @@ const Chatbot = React.memo(() => {
       {/* Chat Button */}
       <button
         onClick={toggleChat}
-        className="fixed bottom-6 right-6 bg-gradient-to-r from-blue-600 to-cyan-600 text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform z-50"
+        className="fixed bottom-6 right-6 bg-blue-600 text-white p-4 rounded-full shadow-2xl hover:bg-blue-700 hover:scale-110 transition-all z-50"
         aria-label="Abrir chat de ayuda"
       >
         {isOpen ? (
@@ -195,9 +195,9 @@ const Chatbot = React.memo(() => {
 
       {/* Chat Window */}
       {isOpen && (
-        <div className="fixed bottom-24 right-6 w-80 h-96 bg-gradient-to-br from-slate-800 to-blue-900 rounded-2xl shadow-2xl border border-blue-400/20 z-50 flex flex-col">
+        <div className="fixed bottom-24 right-6 w-80 h-96 bg-white rounded-2xl shadow-2xl border border-gray-200 z-50 flex flex-col">
           {/* Header */}
-          <div className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white p-4 rounded-t-2xl flex items-center justify-between">
+          <div className="bg-blue-600 text-white p-4 rounded-t-2xl flex items-center justify-between">
             <div className="flex items-center space-x-3">
               <Bot className="h-6 w-6" />
               <div>
@@ -217,10 +217,10 @@ const Chatbot = React.memo(() => {
           <div className="flex-1 overflow-y-auto p-4 space-y-4">
             {messages.map((message) => (
               <div key={message.id} className={`flex ${message.isBot ? 'justify-start' : 'justify-end'}`}>
-                <div className={`max-w-[80%] ${message.isBot ? 'bg-blue-900/50' : 'bg-cyan-600'} rounded-2xl p-3`}>
+                <div className={`max-w-[80%] ${message.isBot ? 'bg-gray-100' : 'bg-blue-600'} rounded-2xl p-3`}>
                   <div className="flex items-start space-x-2">
-                    {message.isBot && <Bot className="h-4 w-4 text-blue-400 mt-1 flex-shrink-0" />}
-                    <div className="text-white text-sm leading-relaxed">{message.text}</div>
+                    {message.isBot && <Bot className="h-4 w-4 text-blue-600 mt-1 flex-shrink-0" />}
+                    <div className={`${message.isBot ? 'text-gray-800' : 'text-white'} text-sm leading-relaxed`}>{message.text}</div>
                     {!message.isBot && <User className="h-4 w-4 text-white mt-1 flex-shrink-0" />}
                   </div>
                   
@@ -231,7 +231,7 @@ const Chatbot = React.memo(() => {
                         <button
                           key={index}
                           onClick={() => handleQuickReply(reply)}
-                          className="block w-full text-left text-xs bg-blue-800/50 hover:bg-blue-700/50 text-blue-200 px-2 py-1 rounded-lg transition-colors"
+                          className="block w-full text-left text-xs bg-blue-50 hover:bg-blue-100 text-blue-600 px-2 py-1 rounded-lg transition-colors border border-blue-200"
                         >
                           {reply}
                         </button>
@@ -245,12 +245,12 @@ const Chatbot = React.memo(() => {
             {/* Typing Indicator */}
             {isTyping && (
               <div className="flex justify-start">
-                <div className="bg-blue-900/50 rounded-2xl p-3 flex items-center space-x-2">
-                  <Bot className="h-4 w-4 text-blue-400" />
+                <div className="bg-gray-100 rounded-2xl p-3 flex items-center space-x-2">
+                  <Bot className="h-4 w-4 text-blue-600" />
                   <div className="flex space-x-1">
-                    <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce"></div>
-                    <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                    <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                    <div className="w-2 h-2 bg-blue-600 rounded-full animate-bounce"></div>
+                    <div className="w-2 h-2 bg-blue-600 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                    <div className="w-2 h-2 bg-blue-600 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
                   </div>
                 </div>
               </div>
@@ -260,7 +260,7 @@ const Chatbot = React.memo(() => {
           </div>
 
           {/* Input */}
-          <div className="p-4 border-t border-blue-400/20">
+          <div className="p-4 border-t border-gray-200">
             <div className="flex space-x-2">
               <input
                 type="text"
@@ -268,12 +268,12 @@ const Chatbot = React.memo(() => {
                 onChange={(e) => setInputValue(e.target.value)}
                 onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
                 placeholder="Escribe tu pregunta..."
-                className="flex-1 bg-slate-800/50 border border-blue-400/30 rounded-xl px-3 py-2 text-white text-sm placeholder-blue-300 focus:outline-none focus:border-cyan-400"
+                className="flex-1 bg-gray-50 border border-gray-300 rounded-xl px-3 py-2 text-gray-900 text-sm placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
               />
               <button
                 onClick={() => handleSendMessage()}
                 disabled={!inputValue.trim()}
-                className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white p-2 rounded-xl hover:scale-105 transition-transform disabled:opacity-50"
+                className="bg-blue-600 text-white p-2 rounded-xl hover:bg-blue-700 transition-colors disabled:opacity-50"
               >
                 <Send className="h-4 w-4" />
               </button>

@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useMemo } from 'react';
-import { Star, Heart, Zap, Shield, TrendingUp, Users, CheckCircle, ArrowRight, Send, Phone, Crown, Sparkles, Target, Award, DollarSign, Camera, MessageCircle, Mail, Eye, FileText, Lock, Rocket, Diamond, CloudLightning as Lightning } from 'lucide-react';
+import { Star, Shield, TrendingUp, Users, CheckCircle, ArrowRight, Send, Phone, Target, Award, DollarSign, Camera, MessageCircle, Mail, Eye, FileText, Lock, Rocket, Diamond, User, Building } from 'lucide-react';
 import Chatbot from './components/Chatbot';
 
 interface FormData {
@@ -119,7 +119,7 @@ const PolicyModal = React.memo(({ type, onClose }: { type: string; onClose: () =
   return (
     <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
       <div className="bg-white rounded-2xl shadow-xl max-w-4xl w-full max-h-[80vh] overflow-hidden">
-        <div className="bg-gradient-to-r from-slate-900 to-blue-900 text-white p-4 flex justify-between items-center">
+        <div className="bg-blue-600 text-white p-4 flex justify-between items-center">
           <h2 className="text-xl font-bold">{policy.title}</h2>
           <button
             onClick={onClose}
@@ -177,7 +177,6 @@ function App() {
     e.preventDefault();
     
     if (!acceptedPrivacy) {
-      // Mostrar mensaje de error visual en lugar de alert
       setShowPrivacyError(true);
       setTimeout(() => setShowPrivacyError(false), 3000);
       return;
@@ -248,15 +247,11 @@ ${formData.comentarios || 'Ninguno'}
     document.getElementById('formulario')?.scrollIntoView({ behavior: 'smooth' });
   }, []);
 
-  const openWhatsApp = useCallback(() => {
-    window.open('mailto:agenciaonlyfxns@gmail.com', '_blank');
-  }, []);
-
   const stats = useMemo(() => [
-    { value: "€8.5K", label: "Media Mensual", icon: DollarSign, color: "from-green-400 to-emerald-500" },
-    { value: "24/7", label: "Soporte Total", icon: Shield, color: "from-blue-400 to-cyan-500" },
-    { value: "+150", label: "Modelos Activas", icon: Eye, color: "from-purple-400 to-pink-500" },
-    { value: "0€", label: "Inversión", icon: Target, color: "from-yellow-400 to-orange-500" }
+    { value: "€8.5K", label: "Media Mensual", icon: DollarSign },
+    { value: "24/7", label: "Soporte Total", icon: Shield },
+    { value: "+150", label: "Modelos Activas", icon: Eye },
+    { value: "0€", label: "Inversión", icon: Target }
   ], []);
 
   const testimonials = useMemo(() => [
@@ -266,8 +261,7 @@ ${formData.comentarios || 'Ninguno'}
       location: "Madrid",
       earning: "€6,200",
       period: "mes pasado",
-      story: "\"Trabajaba en una tienda ganando €900 al mes. Con MYONLYFXNS ahora tengo ingresos extra que me permiten estudiar. El equipo me apoya mucho.\"",
-      gradient: "from-pink-500 to-purple-600"
+      story: "\"Trabajaba en una tienda ganando €900 al mes. Con MYONLYFXNS ahora tengo ingresos extra que me permiten estudiar. El equipo me apoya mucho.\""
     },
     {
       name: "SOFIA R.",
@@ -275,8 +269,7 @@ ${formData.comentarios || 'Ninguno'}
       location: "Barcelona",
       earning: "€9,800",
       period: "mes pasado",
-      story: "\"Empecé hace 8 meses sin experiencia. Me enseñaron todo paso a paso. Ahora tengo más estabilidad económica trabajando desde casa.\"",
-      gradient: "from-blue-500 to-cyan-600"
+      story: "\"Empecé hace 8 meses sin experiencia. Me enseñaron todo paso a paso. Ahora tengo más estabilidad económica trabajando desde casa.\""
     },
     {
       name: "CARLA V.",
@@ -284,8 +277,7 @@ ${formData.comentarios || 'Ninguno'}
       location: "Valencia", 
       earning: "€7,400",
       period: "mes pasado",
-      story: "\"Al principio tenía dudas, pero el equipo es profesional. Me ayudaron con fotos, marketing y consejos. Voy creciendo poco a poco.\"",
-      gradient: "from-green-500 to-emerald-600"
+      story: "\"Al principio tenía dudas, pero el equipo es profesional. Me ayudaron con fotos, marketing y consejos. Voy creciendo poco a poco.\""
     }
   ], []);
 
@@ -293,65 +285,53 @@ ${formData.comentarios || 'Ninguno'}
     {
       icon: Camera,
       title: "GESTIÓN DE CONTENIDO",
-      description: "Te ayudamos con ideas de contenido, edición básica de fotos/videos y consejos para mejorar la calidad de tus publicaciones en la página azul.",
-      gradient: "from-blue-500 to-cyan-500"
+      description: "Te ayudamos con ideas de contenido, edición básica de fotos/videos y consejos para mejorar la calidad de tus publicaciones en la página azul."
     },
     {
       icon: TrendingUp,
       title: "MARKETING PROFESIONAL",
-      description: "Estrategias de promoción en redes sociales, optimización de perfil y técnicas probadas para hacer crecer tu audiencia de forma orgánica.",
-      gradient: "from-purple-500 to-pink-500"
+      description: "Estrategias de promoción en redes sociales, optimización de perfil y técnicas probadas para hacer crecer tu audiencia de forma orgánica."
     },
     {
       icon: MessageCircle,
       title: "APOYO EN CHAT",
-      description: "Te enseñamos técnicas de conversación efectivas y te apoyamos con estrategias para mejorar la interacción con tus seguidores.",
-      gradient: "from-green-500 to-emerald-500"
+      description: "Te enseñamos técnicas de conversación efectivas y te apoyamos con estrategias para mejorar la interacción con tus seguidores."
     },
     {
       icon: DollarSign,
       title: "OPTIMIZACIÓN INGRESOS",
-      description: "Consejos sobre precios, estrategias de monetización y técnicas para aumentar gradualmente tus ingresos mensuales.",
-      gradient: "from-yellow-500 to-orange-500"
+      description: "Consejos sobre precios, estrategias de monetización y técnicas para aumentar gradualmente tus ingresos mensuales."
     },
     {
       icon: Shield,
       title: "PROTECCIÓN TOTAL",
-      description: "Consejos de seguridad, privacidad online y cómo manejar situaciones difíciles manteniendo tu bienestar personal.",
-      gradient: "from-indigo-500 to-blue-500"
+      description: "Consejos de seguridad, privacidad online y cómo manejar situaciones difíciles manteniendo tu bienestar personal."
     },
     {
       icon: Award,
       title: "COACHING PERSONAL",
-      description: "Sesiones de mentoría personalizada, apoyo emocional y desarrollo de confianza para crecer profesionalmente.",
-      gradient: "from-red-500 to-pink-500"
+      description: "Sesiones de mentoría personalizada, apoyo emocional y desarrollo de confianza para crecer profesionalmente."
     }
   ], []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
-      {/* Elementos de fondo optimizados */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl"></div>
-        <div className="absolute top-3/4 right-1/4 w-64 h-64 bg-indigo-500/5 rounded-full blur-3xl"></div>
-      </div>
-
+    <div className="min-h-screen bg-white">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-slate-900/95 backdrop-blur-sm border-b border-blue-500/20 z-40">
+      <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-sm border-b border-gray-200 z-40 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-3">
-              <Diamond className="h-8 w-8 text-cyan-400" />
+              <Building className="h-8 w-8 text-blue-600" />
               <div>
-                <span className="text-2xl font-black bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+                <span className="text-2xl font-black text-blue-600">
                   MYONLYFXNS
                 </span>
-                <div className="text-xs text-blue-300 font-medium">AGENCY</div>
+                <div className="text-xs text-gray-600 font-medium">AGENCY</div>
               </div>
             </div>
             <button
               onClick={scrollToForm}
-              className="flex items-center space-x-2 bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-6 py-2 rounded-full font-bold hover:scale-105 transition-transform"
+              className="flex items-center space-x-2 bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
             >
               <Mail className="h-4 w-4" />
               <span>Contactar</span>
@@ -361,35 +341,35 @@ ${formData.comentarios || 'Ninguno'}
       </nav>
 
       {/* Hero Section */}
-      <section className="pt-24 pb-16">
+      <section className="pt-24 pb-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="inline-flex items-center bg-gradient-to-r from-blue-900/50 to-cyan-900/50 border border-blue-400/30 rounded-full px-6 py-3 mb-8">
-            <Lightning className="h-5 w-5 text-cyan-400 mr-2" />
-            <span className="font-bold bg-gradient-to-r from-cyan-300 to-blue-300 bg-clip-text text-transparent">
+          <div className="inline-flex items-center bg-blue-50 border border-blue-200 rounded-full px-6 py-3 mb-8">
+            <Diamond className="h-5 w-5 text-blue-600 mr-2" />
+            <span className="font-semibold text-blue-600">
               AGENCIA ESPECIALIZADA PÁGINA AZUL
             </span>
           </div>
           
-          <h1 className="text-4xl md:text-6xl font-black text-white mb-6 leading-tight">
+          <h1 className="text-4xl md:text-6xl font-black text-gray-900 mb-6 leading-tight">
             TRANSFORMA TU
             <br />
-            <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+            <span className="text-blue-600">
               SITUACIÓN
             </span>
             <br />
-            <span className="bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
+            <span className="text-blue-600">
               FINANCIERA
             </span>
           </h1>
           
-          <p className="text-lg md:text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
             Únete a nuestra agencia especializada y descubre cómo generar €5,000-€15,000 mensuales 
             en la página azul con nuestro apoyo profesional.
           </p>
 
           <button 
             onClick={scrollToForm}
-            className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-8 py-4 rounded-full text-lg font-black hover:scale-105 transition-transform mb-12"
+            className="bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-bold hover:bg-blue-700 transition-colors mb-12"
           >
             <div className="flex items-center space-x-3">
               <Rocket className="h-5 w-5" />
@@ -402,12 +382,12 @@ ${formData.comentarios || 'Ninguno'}
             {stats.map((stat, index) => {
               const IconComponent = stat.icon;
               return (
-                <div key={index} className="bg-gradient-to-br from-slate-800/50 to-blue-900/50 p-6 rounded-2xl border border-blue-400/20">
-                  <div className={`inline-flex items-center justify-center w-12 h-12 bg-gradient-to-r ${stat.color} rounded-xl mb-3`}>
-                    <IconComponent className="h-6 w-6 text-white" />
+                <div key={index} className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
+                  <div className="inline-flex items-center justify-center w-12 h-12 bg-blue-100 rounded-xl mb-3">
+                    <IconComponent className="h-6 w-6 text-blue-600" />
                   </div>
-                  <div className="text-2xl font-black text-white mb-1">{stat.value}</div>
-                  <div className="text-sm text-blue-300 font-medium">{stat.label}</div>
+                  <div className="text-2xl font-black text-gray-900 mb-1">{stat.value}</div>
+                  <div className="text-sm text-gray-600 font-medium">{stat.label}</div>
                 </div>
               );
             })}
@@ -416,44 +396,44 @@ ${formData.comentarios || 'Ninguno'}
       </section>
 
       {/* Success Stories */}
-      <section className="py-16">
+      <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-5xl font-black text-white mb-4">
+            <h2 className="text-3xl md:text-5xl font-black text-gray-900 mb-4">
               HISTORIAS DE
-              <span className="bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent ml-2">
+              <span className="text-blue-600 ml-2">
                 ÉXITO REAL
               </span>
             </h2>
-            <p className="text-xl text-blue-200 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               Modelos reales generando €5K-€15K mensuales con nuestra agencia
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
             {testimonials.map((story, index) => (
-              <div key={index} className="bg-gradient-to-br from-slate-800/50 to-blue-900/50 p-6 rounded-2xl border border-blue-400/20">
+              <div key={index} className="bg-gray-50 p-6 rounded-xl border border-gray-200">
                 <div className="flex items-center mb-6">
-                  <div className={`w-12 h-12 rounded-full bg-gradient-to-r ${story.gradient} flex items-center justify-center text-white font-black mr-3`}>
+                  <div className="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center text-white font-black mr-3">
                     {story.name.charAt(0)}
                   </div>
                   <div>
-                    <div className="font-black text-lg text-white">{story.name}</div>
-                    <div className="text-blue-300">{story.age} • {story.location}</div>
+                    <div className="font-black text-lg text-gray-900">{story.name}</div>
+                    <div className="text-gray-600">{story.age} • {story.location}</div>
                   </div>
                 </div>
                 
-                <div className="bg-gradient-to-r from-green-900/50 to-emerald-900/50 p-4 rounded-xl mb-6 border border-green-400/20">
-                  <div className="text-2xl font-black text-green-400 text-center">{story.earning}</div>
-                  <div className="text-green-300 text-center font-bold">{story.period}</div>
+                <div className="bg-blue-50 p-4 rounded-xl mb-6 border border-blue-200">
+                  <div className="text-2xl font-black text-blue-600 text-center">{story.earning}</div>
+                  <div className="text-blue-600 text-center font-semibold">{story.period}</div>
                 </div>
 
-                <blockquote className="text-blue-100 italic leading-relaxed">
+                <blockquote className="text-gray-700 italic leading-relaxed">
                   {story.story}
                 </blockquote>
 
                 <div className="flex justify-center mt-4">
-                  <div className="flex text-yellow-400">
+                  <div className="flex text-blue-600">
                     {[...Array(5)].map((_, i) => (
                       <Star key={i} className="h-4 w-4 fill-current" />
                     ))}
@@ -466,17 +446,17 @@ ${formData.comentarios || 'Ninguno'}
       </section>
 
       {/* Services Section */}
-      <section className="py-16">
+      <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-5xl font-black text-white mb-4">
-              <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+            <h2 className="text-3xl md:text-5xl font-black text-gray-900 mb-4">
+              <span className="text-blue-600">
                 SERVICIOS
               </span>
               <br />
               TODO INCLUIDO
             </h2>
-            <p className="text-xl text-blue-200 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Nos encargamos de todo para que te enfoques en crear contenido
             </p>
           </div>
@@ -485,12 +465,12 @@ ${formData.comentarios || 'Ninguno'}
             {services.map((service, index) => {
               const IconComponent = service.icon;
               return (
-                <div key={index} className="bg-gradient-to-br from-slate-800/50 to-blue-900/50 p-6 rounded-2xl border border-blue-400/20">
-                  <div className={`inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r ${service.gradient} rounded-xl mb-4`}>
-                    <IconComponent className="h-8 w-8 text-white" />
+                <div key={index} className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
+                  <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-xl mb-4">
+                    <IconComponent className="h-8 w-8 text-blue-600" />
                   </div>
-                  <h3 className="text-xl font-black text-white mb-3">{service.title}</h3>
-                  <p className="text-blue-200 leading-relaxed">{service.description}</p>
+                  <h3 className="text-xl font-black text-gray-900 mb-3">{service.title}</h3>
+                  <p className="text-gray-600 leading-relaxed">{service.description}</p>
                 </div>
               );
             })}
@@ -499,29 +479,29 @@ ${formData.comentarios || 'Ninguno'}
       </section>
 
       {/* Form Section */}
-      <section id="formulario" className="py-16">
+      <section id="formulario" className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-5xl font-black text-white mb-4">
+            <h2 className="text-3xl md:text-5xl font-black text-gray-900 mb-4">
               ¿LISTA PARA
-              <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent ml-2">
+              <span className="text-blue-600 ml-2">
                 CAMBIAR
               </span>
               <br />
-              <span className="bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
+              <span className="text-blue-600">
                 TU VIDA?
               </span>
             </h2>
-            <p className="text-xl text-blue-200 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               Completa este formulario y te contactaremos
             </p>
           </div>
 
-          <div className="bg-gradient-to-br from-slate-800/50 to-blue-900/50 rounded-2xl border border-blue-400/20 p-8">
+          <div className="bg-gray-50 rounded-2xl border border-gray-200 p-8">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-white font-bold mb-2">
+                  <label className="block text-gray-900 font-bold mb-2">
                     Nombre Completo *
                   </label>
                   <input
@@ -530,12 +510,12 @@ ${formData.comentarios || 'Ninguno'}
                     value={formData.nombre}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 border border-blue-400/30 rounded-xl bg-slate-800/50 text-white placeholder-blue-300"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-white text-gray-900 placeholder-gray-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
                     placeholder="Ej: María García"
                   />
                 </div>
                 <div>
-                  <label className="block text-white font-bold mb-2">
+                  <label className="block text-gray-900 font-bold mb-2">
                     Edad *
                   </label>
                   <select
@@ -543,7 +523,7 @@ ${formData.comentarios || 'Ninguno'}
                     value={formData.edad}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 border border-blue-400/30 rounded-xl bg-slate-800/50 text-white"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-white text-gray-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
                   >
                     <option value="">Selecciona tu edad</option>
                     <option value="18-20">18-20 años</option>
@@ -557,7 +537,7 @@ ${formData.comentarios || 'Ninguno'}
 
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-white font-bold mb-2">
+                  <label className="block text-gray-900 font-bold mb-2">
                     Ciudad *
                   </label>
                   <input
@@ -566,12 +546,12 @@ ${formData.comentarios || 'Ninguno'}
                     value={formData.ciudad}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 border border-blue-400/30 rounded-xl bg-slate-800/50 text-white placeholder-blue-300"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-white text-gray-900 placeholder-gray-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
                     placeholder="Ej: Madrid"
                   />
                 </div>
                 <div>
-                  <label className="block text-white font-bold mb-2">
+                  <label className="block text-gray-900 font-bold mb-2">
                     Email *
                   </label>
                   <input
@@ -580,14 +560,14 @@ ${formData.comentarios || 'Ninguno'}
                     value={formData.telefono}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 border border-blue-400/30 rounded-xl bg-slate-800/50 text-white placeholder-blue-300"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-white text-gray-900 placeholder-gray-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
                     placeholder="Ej: maria@gmail.com"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-white font-bold mb-2">
+                <label className="block text-gray-900 font-bold mb-2">
                   ¿Tienes experiencia en OF? *
                 </label>
                 <select
@@ -595,7 +575,7 @@ ${formData.comentarios || 'Ninguno'}
                   value={formData.experiencia_of}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-3 border border-blue-400/30 rounded-xl bg-slate-800/50 text-white"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-white text-gray-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
                 >
                   <option value="">Selecciona una opción</option>
                   <option value="no-tengo">No, nunca he tenido OF</option>
@@ -607,14 +587,14 @@ ${formData.comentarios || 'Ninguno'}
 
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-white font-bold mb-2">
+                  <label className="block text-gray-900 font-bold mb-2">
                     Seguidores Instagram
                   </label>
                   <select
                     name="seguidores_instagram"
                     value={formData.seguidores_instagram}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-blue-400/30 rounded-xl bg-slate-800/50 text-white"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-white text-gray-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
                   >
                     <option value="">Selecciona cantidad</option>
                     <option value="0-1k">0 - 1,000</option>
@@ -626,14 +606,14 @@ ${formData.comentarios || 'Ninguno'}
                   </select>
                 </div>
                 <div>
-                  <label className="block text-white font-bold mb-2">
+                  <label className="block text-gray-900 font-bold mb-2">
                     Seguidores TikTok
                   </label>
                   <select
                     name="seguidores_tiktok"
                     value={formData.seguidores_tiktok}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-blue-400/30 rounded-xl bg-slate-800/50 text-white"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-white text-gray-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
                   >
                     <option value="">Selecciona cantidad</option>
                     <option value="0-1k">0 - 1,000</option>
@@ -647,7 +627,7 @@ ${formData.comentarios || 'Ninguno'}
               </div>
 
               <div>
-                <label className="block text-white font-bold mb-2">
+                <label className="block text-gray-900 font-bold mb-2">
                   ¿Cuál es tu principal motivación? *
                 </label>
                 <select
@@ -655,7 +635,7 @@ ${formData.comentarios || 'Ninguno'}
                   value={formData.motivacion}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-3 border border-blue-400/30 rounded-xl bg-slate-800/50 text-white"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-white text-gray-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
                 >
                   <option value="">Selecciona tu motivación</option>
                   <option value="libertad-financiera">Libertad financiera</option>
@@ -669,7 +649,7 @@ ${formData.comentarios || 'Ninguno'}
 
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-white font-bold mb-2">
+                  <label className="block text-gray-900 font-bold mb-2">
                     ¿Cuánto tiempo puedes dedicar? *
                   </label>
                   <select
@@ -677,7 +657,7 @@ ${formData.comentarios || 'Ninguno'}
                     value={formData.disponibilidad}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 border border-blue-400/30 rounded-xl bg-slate-800/50 text-white"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-white text-gray-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
                   >
                     <option value="">Selecciona disponibilidad</option>
                     <option value="1-2-horas">1-2 horas al día</option>
@@ -688,14 +668,14 @@ ${formData.comentarios || 'Ninguno'}
                   </select>
                 </div>
                 <div>
-                  <label className="block text-white font-bold mb-2">
+                  <label className="block text-gray-900 font-bold mb-2">
                     Ingresos actuales mensuales
                   </label>
                   <select
                     name="ingresos_actuales"
                     value={formData.ingresos_actuales}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-blue-400/30 rounded-xl bg-slate-800/50 text-white"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-white text-gray-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
                   >
                     <option value="">Selecciona rango</option>
                     <option value="0-500">€0 - €500</option>
@@ -708,7 +688,7 @@ ${formData.comentarios || 'Ninguno'}
               </div>
 
               <div>
-                <label className="block text-white font-bold mb-2">
+                <label className="block text-gray-900 font-bold mb-2">
                   ¿Cuál es tu objetivo de ingresos mensuales? *
                 </label>
                 <select
@@ -716,7 +696,7 @@ ${formData.comentarios || 'Ninguno'}
                   value={formData.objetivos_ingresos}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-3 border border-blue-400/30 rounded-xl bg-slate-800/50 text-white"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-white text-gray-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
                 >
                   <option value="">Selecciona tu objetivo</option>
                   <option value="1k-2k">€1,000 - €2,000</option>
@@ -729,7 +709,7 @@ ${formData.comentarios || 'Ninguno'}
 
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-white font-bold mb-2">
+                  <label className="block text-gray-900 font-bold mb-2">
                     ¿Ya tienes contenido creado? *
                   </label>
                   <select
@@ -737,7 +717,7 @@ ${formData.comentarios || 'Ninguno'}
                     value={formData.tiene_contenido}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 border border-blue-400/30 rounded-xl bg-slate-800/50 text-white"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-white text-gray-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
                   >
                     <option value="">Selecciona opción</option>
                     <option value="si-mucho">Sí, tengo mucho contenido</option>
@@ -747,7 +727,7 @@ ${formData.comentarios || 'Ninguno'}
                   </select>
                 </div>
                 <div>
-                  <label className="block text-white font-bold mb-2">
+                  <label className="block text-gray-900 font-bold mb-2">
                     ¿Dispuesta a promocionarte? *
                   </label>
                   <select
@@ -755,7 +735,7 @@ ${formData.comentarios || 'Ninguno'}
                     value={formData.dispuesta_promocion}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 border border-blue-400/30 rounded-xl bg-slate-800/50 text-white"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-white text-gray-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
                   >
                     <option value="">Selecciona opción</option>
                     <option value="si-totalmente">Sí, completamente</option>
@@ -767,7 +747,7 @@ ${formData.comentarios || 'Ninguno'}
               </div>
 
               <div>
-                <label className="block text-white font-bold mb-2">
+                <label className="block text-gray-900 font-bold mb-2">
                   ¿Algo más que quieras contarnos?
                 </label>
                 <textarea
@@ -775,15 +755,15 @@ ${formData.comentarios || 'Ninguno'}
                   value={formData.comentarios}
                   onChange={handleInputChange}
                   rows={3}
-                  className="w-full px-4 py-3 border border-blue-400/30 rounded-xl bg-slate-800/50 text-white placeholder-blue-300 resize-none"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-white text-gray-900 placeholder-gray-500 resize-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
                   placeholder="Cuéntanos sobre tus metas, dudas o cualquier información adicional..."
                 />
               </div>
 
-              <div className="bg-gradient-to-r from-blue-900/30 to-cyan-900/30 p-4 rounded-xl border border-blue-400/20">
+              <div className="bg-blue-50 p-4 rounded-xl border border-blue-200">
                 {showPrivacyError && (
-                  <div className="mb-4 p-3 bg-red-900/50 border border-red-400/30 rounded-xl">
-                    <p className="text-red-300 text-sm font-medium">
+                  <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-xl">
+                    <p className="text-red-600 text-sm font-medium">
                       ⚠️ Debes aceptar nuestra Política de Privacidad para continuar
                     </p>
                   </div>
@@ -794,14 +774,14 @@ ${formData.comentarios || 'Ninguno'}
                     checked={acceptedPrivacy}
                     onChange={(e) => setAcceptedPrivacy(e.target.checked)}
                     required
-                    className="mt-1 w-4 h-4 text-blue-600 bg-slate-800 border-blue-400 rounded focus:ring-blue-500 focus:ring-2"
+                    className="mt-1 w-4 h-4 text-blue-600 bg-white border-gray-300 rounded focus:ring-blue-500 focus:ring-2"
                   />
-                  <span className="text-blue-200 text-sm leading-relaxed">
+                  <span className="text-gray-700 text-sm leading-relaxed">
                     He leído y acepto la{' '}
                     <button
                       type="button"
                       onClick={() => setShowPolicies('privacy')}
-                      className="text-cyan-400 hover:text-cyan-300 underline font-medium"
+                      className="text-blue-600 hover:text-blue-700 underline font-medium"
                     >
                       Política de Privacidad
                     </button>
@@ -809,7 +789,7 @@ ${formData.comentarios || 'Ninguno'}
                     <button
                       type="button"
                       onClick={() => setShowPolicies('legal')}
-                      className="text-cyan-400 hover:text-cyan-300 underline font-medium"
+                      className="text-blue-600 hover:text-blue-700 underline font-medium"
                     >
                       Aviso Legal
                     </button>
@@ -822,7 +802,7 @@ ${formData.comentarios || 'Ninguno'}
                 <button
                   type="submit"
                   disabled={isSubmitting || !acceptedPrivacy}
-                  className="bg-gradient-to-r from-cyan-600 to-blue-600 text-white px-12 py-4 rounded-full text-lg font-black hover:scale-105 transition-transform disabled:opacity-50"
+                  className="bg-blue-600 text-white px-12 py-4 rounded-lg text-lg font-bold hover:bg-blue-700 transition-colors disabled:opacity-50"
                 >
                   <div className="flex items-center space-x-3">
                     <Mail className="h-5 w-5" />
@@ -831,7 +811,7 @@ ${formData.comentarios || 'Ninguno'}
                   </div>
                 </button>
                 
-                <p className="text-blue-300 mt-4">
+                <p className="text-gray-600 mt-4">
                   Al enviar se abrirá tu cliente de email con la información prellenada
                 </p>
               </div>
@@ -841,24 +821,24 @@ ${formData.comentarios || 'Ninguno'}
       </section>
 
       {/* Footer */}
-      <footer className="bg-gradient-to-r from-slate-900 to-blue-900 border-t border-blue-400/20 py-12">
+      <footer className="bg-gray-900 text-white py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <div className="flex items-center justify-center space-x-3 mb-8">
-              <Diamond className="h-10 w-10 text-cyan-400" />
+              <Building className="h-10 w-10 text-white" />
               <div>
-                <span className="text-3xl font-black bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+                <span className="text-3xl font-black text-white">
                   MYONLYFXNS
                 </span>
-                <div className="text-sm text-blue-300 font-bold">AGENCY</div>
+                <div className="text-sm text-gray-400 font-bold">AGENCY</div>
               </div>
             </div>
             
-            <p className="text-xl mb-8 text-blue-200 max-w-2xl mx-auto">
+            <p className="text-xl mb-8 text-gray-300 max-w-2xl mx-auto">
               Más de 150 modelos generando €5K-€15K mensuales con nuestro apoyo
             </p>
             
-            <div className="flex items-center justify-center space-x-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-8 py-3 rounded-full text-lg font-bold inline-flex mb-8">
+            <div className="flex items-center justify-center space-x-3 bg-blue-600 text-white px-8 py-3 rounded-lg text-lg font-bold inline-flex mb-8">
               <Mail className="h-5 w-5" />
               <span>agenciaonlyfxns@gmail.com</span>
             </div>
@@ -866,29 +846,29 @@ ${formData.comentarios || 'Ninguno'}
             <div className="flex justify-center space-x-8 mb-8">
               <button
                 onClick={() => setShowPolicies('privacy')}
-                className="flex items-center space-x-2 text-blue-300 hover:text-cyan-300 transition-colors"
+                className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors"
               >
                 <Lock className="h-4 w-4" />
                 <span>Política de Privacidad</span>
               </button>
               <button
                 onClick={() => setShowPolicies('legal')}
-                className="flex items-center space-x-2 text-blue-300 hover:text-cyan-300 transition-colors"
+                className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors"
               >
                 <FileText className="h-4 w-4" />
                 <span>Aviso Legal</span>
               </button>
               <button
                 onClick={() => setShowPolicies('cookies')}
-                className="flex items-center space-x-2 text-blue-300 hover:text-cyan-300 transition-colors"
+                className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors"
               >
                 <Eye className="h-4 w-4" />
                 <span>Política de Cookies</span>
               </button>
             </div>
             
-            <div className="border-t border-blue-400/20 pt-6">
-              <p className="text-blue-400 font-medium">
+            <div className="border-t border-gray-700 pt-6">
+              <p className="text-gray-400 font-medium">
                 © 2025 MYONLYFXNS AGENCY. Transformando vidas desde 2020.
               </p>
             </div>
