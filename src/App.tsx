@@ -1,6 +1,8 @@
 import React, { useState, useCallback, useMemo } from 'react';
 import { Star, Shield, TrendingUp, Users, CheckCircle, ArrowRight, Send, Phone, Target, Award, DollarSign, Camera, MessageCircle, Mail, Eye, FileText, Lock, Rocket, Diamond, User, Building } from 'lucide-react';
 import Chatbot from './components/Chatbot';
+import CookiesPopup from './components/CookiesPopup';
+import CookiesCustomizer from './components/CookiesCustomizer';
 
 interface FormData {
   nombre: string;
@@ -164,6 +166,7 @@ function App() {
   const [acceptedPrivacy, setAcceptedPrivacy] = useState(false);
   const [showPolicies, setShowPolicies] = useState<string | null>(null);
   const [showPrivacyError, setShowPrivacyError] = useState(false);
+  const [showCookiesCustomizer, setShowCookiesCustomizer] = useState(false);
 
   const handleInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -242,6 +245,22 @@ ${formData.comentarios || 'Ninguno'}
     });
     setAcceptedPrivacy(false);
   }, [formData]);
+
+  const handleCookiesAccept = useCallback(() => {
+    console.log('Cookies aceptadas');
+  }, []);
+
+  const handleCookiesReject = useCallback(() => {
+    console.log('Cookies rechazadas');
+  }, []);
+
+  const handleCookiesCustomize = useCallback(() => {
+    setShowCookiesCustomizer(true);
+  }, []);
+
+  const handleCookiesCustomizerSave = useCallback((preferences: any) => {
+    console.log('Preferencias guardadas:', preferences);
+  }, []);
 
   const scrollToForm = useCallback(() => {
     document.getElementById('formulario')?.scrollIntoView({ behavior: 'smooth' });
@@ -883,6 +902,20 @@ ${formData.comentarios || 'Ninguno'}
           onClose={() => setShowPolicies(null)} 
         />
       )}
+
+      {/* Cookies Popup */}
+      <CookiesPopup
+        onAccept={handleCookiesAccept}
+        onReject={handleCookiesReject}
+        onCustomize={handleCookiesCustomize}
+      />
+
+      {/* Cookies Customizer */}
+      <CookiesCustomizer
+        isOpen={showCookiesCustomizer}
+        onClose={() => setShowCookiesCustomizer(false)}
+        onSave={handleCookiesCustomizerSave}
+      />
 
       {/* Chatbot */}
       <Chatbot />
